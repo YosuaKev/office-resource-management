@@ -19,9 +19,13 @@ public class Main {
         employeeService.processEmployee(security);
         employeeService.processEmployee(intern);
 
-        reportService.createFullReport((Manager) manager);
-        reportService.createFullReport((Technician) technician);
-        reportService.createFullReport((SecurityGuard) security);
-        reportService.createFullReport((Intern) intern);
+        reportService.createReport(manager);
+        reportService.createReport(technician);
+        reportService.createReport(security);
+        reportService.createReport(intern);
+
+        MeetingRoom room = new MeetingRoom("MR-01", 10, true);
+        Reservation reservation = new Reservation("R001", manager, room, "2026-03-11");
+        reservation.printReservation();
     }
 }
