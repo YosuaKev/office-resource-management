@@ -1,14 +1,30 @@
 package com.company.office.model;
 
-public class Technician extends Employee {
+import com.company.office.contract.*;
+
+public class Technician extends Employee implements
+        ServerRoomAccess,
+        NightShiftCapable,
+        Coder,
+        EquipmentRepairer,
+        PresentationPreparer,
+        DailyReportGenerator,
+        MonthlyReportGenerator,
+        PdfExportable,
+        CsvExportable {
 
     public Technician(String id, String name, double salary) {
         super(id, name, salary);
     }
 
     @Override
-    public void approveBudget(double amount) {
-        throw new UnsupportedOperationException("Technician cannot approve budget.");
+    public void accessServerRoom() {
+        System.out.println(name + " accessed the server room for maintenance.");
+    }
+
+    @Override
+    public void workNightShift() {
+        System.out.println(name + " is working night shift.");
     }
 
     @Override
@@ -22,23 +38,8 @@ public class Technician extends Employee {
     }
 
     @Override
-    public void guardEntrance() {
-        throw new UnsupportedOperationException("Technician cannot guard entrance.");
-    }
-
-    @Override
     public void preparePresentation() {
         System.out.println(name + " prepared technical presentation.");
-    }
-
-    @Override
-    public void cleanOffice() {
-        System.out.println(name + " cleaned workstation area.");
-    }
-
-    @Override
-    public void managePayroll() {
-        throw new UnsupportedOperationException("Technician cannot manage payroll.");
     }
 
     @Override
@@ -52,11 +53,6 @@ public class Technician extends Employee {
     }
 
     @Override
-    public void generateAuditReport() {
-        throw new UnsupportedOperationException("Technician cannot generate audit report.");
-    }
-
-    @Override
     public void exportPdf() {
         System.out.println(name + " exported PDF report.");
     }
@@ -64,10 +60,5 @@ public class Technician extends Employee {
     @Override
     public void exportCsv() {
         System.out.println(name + " exported CSV report.");
-    }
-
-    @Override
-    public void emailReport() {
-        throw new UnsupportedOperationException("Technician cannot email report.");
     }
 }

@@ -1,39 +1,41 @@
 package com.company.office.model;
 
-public class Manager extends Employee {
+import com.company.office.contract.*;
+
+public class Manager extends Employee implements
+        BudgetApprover,
+        ServerRoomAccess,
+        PayrollManager,
+        PresentationPreparer,
+        DailyReportGenerator,
+        MonthlyReportGenerator,
+        AuditReportGenerator,
+        PdfExportable,
+        CsvExportable,
+        EmailableReport {
 
     public Manager(String id, String name, double salary) {
         super(id, name, salary);
     }
 
     @Override
-    public void codeFeature() {
-        System.out.println(name + " codes a strategic dashboard feature.");
+    public void approveBudget(double amount) {
+        System.out.println(name + " approved budget: " + amount);
     }
 
     @Override
-    public void repairEquipment() {
-        System.out.println(name + " repaired office equipment.");
+    public void accessServerRoom() {
+        System.out.println(name + " accessed the server room.");
     }
 
     @Override
-    public void guardEntrance() {
-        System.out.println(name + " guarded the entrance.");
+    public void managePayroll() {
+        System.out.println(name + " managed payroll.");
     }
 
     @Override
     public void preparePresentation() {
         System.out.println(name + " prepared executive presentation.");
-    }
-
-    @Override
-    public void cleanOffice() {
-        System.out.println(name + " cleaned the office.");
-    }
-
-    @Override
-    public void managePayroll() {
-        System.out.println(name + " approved and managed payroll.");
     }
 
     @Override
@@ -53,21 +55,16 @@ public class Manager extends Employee {
 
     @Override
     public void exportPdf() {
-        System.out.println(name + " exported report to PDF.");
+        System.out.println(name + " exported PDF.");
     }
 
     @Override
     public void exportCsv() {
-        System.out.println(name + " exported report to CSV.");
+        System.out.println(name + " exported CSV.");
     }
 
     @Override
     public void emailReport() {
         System.out.println(name + " emailed report.");
-    }
-
-    @Override
-    public void workNightShift() {
-        throw new UnsupportedOperationException("Manager does not work night shift.");
     }
 }
